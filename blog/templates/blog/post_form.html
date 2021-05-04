@@ -4,7 +4,7 @@
 <div class="jumbotron">
     <h1>New Post</h1>
 
-    <form action="{% url 'login' %}" method="POST">
+    <form method="POST">
         {% csrf_token %}
         {% form.as_p %}
         <input type="submit" value="submit" class="btn btn-primary">

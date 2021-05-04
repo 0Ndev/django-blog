@@ -2,7 +2,16 @@
 
 {% block body_block %}
 <div class="jumbotron">
-    <h1>Post draft list</h1>
-
+    <h2>Post draft list</h2>
+    {% for post in posts %}
+    <div class="post">
+        <p>created: {{post.created_date|date: 'd-m-Y'}} </p>
+        <h3>{{post.title}} </h3>
+        <p>{{post.text|truncatechars:200}}</p>
+    </div>
+    {% empty %}
+    <p>No drafts</p>
+    {% endfor %}
 </div>
+
 {% endblock %}
