@@ -1,17 +1,11 @@
-{% extends "base.html" %}
+{% extends "blog/base.html" %}
+{% block content %}
 
-{% block body_block %}
-<div class="jumbotron">
-    <h2>Post draft list</h2>
-    {% for post in posts %}
-    <div class="post">
-        <p>created: {{post.created_date|date: 'd-m-Y'}} </p>
-        <h3>{{post.title}} </h3>
-        <p>{{post.text|truncatechars:200}}</p>
-    </div>
-    {% empty %}
-    <p>No drafts</p>
-    {% endfor %}
+{% for post in posts %}
+<div class="post">
+    <p class='date'> created: {{ post.created_date|date:'d-m-Y'}}</p>
+    <p><a href="{% url 'blog:post_detail' pk=post.pk %}">{{post.title}}</a></p>
+    <p>{{ post.text|truncatechars:200 }}</p>
 </div>
-
+{% endfor %}
 {% endblock %}

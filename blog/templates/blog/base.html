@@ -25,14 +25,17 @@
             <a href="https://github.com/0Ndev/">GitHub</a>
             <a href="{% url 'admin:index' %}">Admin</a>
 
+
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'blog:post_new' %}">New Post</a></li>
                 <li><a href="{% url 'blog:post_draft_list' %}">Drafts</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+
                 <li>Welcome: {{user.username}} </li>
+                <li><a href="{% url 'admin:logout' %}">Logout</a></li>
+
                 {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'admin:login' %}">Login</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -50,6 +53,7 @@
         </div>
     </div>
 
+    <!-- https://github.com/miguelrochajr/DjangoFullStackBootcamp_Course/tree/master/Section23_BlogCloneProject/mysite -->
 </body>
 
 </html>

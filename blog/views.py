@@ -50,7 +50,7 @@ class DraftListView(LoginRequiredMixin, ListView):
     model = Post
 
     def get_queryset(self):
-        return Post.objects.filter(published_date_isnull=True).order_by('created_date')
+        return Post.objects.filter(published_date__isnull=True).order_by('created_date')
 
 
 # #######################################
@@ -93,3 +93,15 @@ def comment_remove(request, pk):
     post_pk = comment.post.pk
     comment.delete()
     return redirect('post_detail', pk=post_pk)
+
+
+# custom views/urls
+def notfound(request, exception):
+    return render(request, 'blog/400.html')
+
+# def handler404(request, exception):
+#     return render(request, '404.html', status=404)
+
+
+# def handler500(request, exception):
+#     return render(request, '500.html', status=500)
